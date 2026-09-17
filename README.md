@@ -1,73 +1,93 @@
-# Welcome to your Lovable project
+# Sanchalana 2K26 - College Fest Website
 
-## Project info
+A full-stack web application for Sanchalana 2K26, a college cultural and technical fest. Built with the MERN stack.
 
-**URL**: https://lovable.dev/projects/600cfede-b8f4-4b5e-8d86-4458807008eb
+## Tech Stack
 
-## How can I edit this code?
+**Frontend**
+- React 18 + TypeScript
+- Vite (build tool & dev server)
+- Tailwind CSS + shadcn-ui (UI components)
+- React Router DOM (client-side routing)
+- TanStack React Query (server state management)
+- Framer Motion (animations)
+- Spline (3D interactive elements)
 
-There are several ways of editing your application.
+**Backend**
+- Node.js + Express.js
+- MongoDB + Mongoose (ODM)
+- JWT (JSON Web Tokens) for authentication
+- bcrypt.js for password hashing
 
-**Use Lovable**
+## Getting Started
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/600cfede-b8f4-4b5e-8d86-4458807008eb) and start prompting.
+### Prerequisites
+- Node.js >= 18
+- MongoDB running locally or a MongoDB Atlas URI
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+### 1. Clone the repository
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+cd retroflow-studio
 ```
 
-**Edit a file directly in GitHub**
+### 2. Install dependencies
+```sh
+npm install
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 3. Set up environment variables
+Create a `.env` file in the root with:
+```
+VITE_MONGODB_URI=mongodb://localhost:27017/sanchalana2k26
+VITE_JWT_SECRET=your-super-secret-jwt-key
+```
 
-**Use GitHub Codespaces**
+### 4. Start the backend server
+```sh
+node server.js
+```
+> Runs on http://localhost:5000
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 5. Start the frontend dev server
+```sh
+npm run dev
+```
+> Runs on http://localhost:8080
 
-## What technologies are used for this project?
+## Project Structure
 
-This project is built with:
+```
+src/
+├── components/       # Reusable UI components (HeroSection, Footer, etc.)
+├── contexts/         # React Context (AuthContext for global auth state)
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions
+├── models/           # Mongoose models (if used on frontend)
+├── pages/            # Route-level page components
+│   ├── Index.tsx
+│   ├── Events.tsx
+│   ├── Gallery.tsx
+│   ├── Team.tsx
+│   ├── Scoreboard.tsx
+│   ├── Announcements.tsx
+│   ├── Contact.tsx
+│   ├── About.tsx
+│   ├── Login.tsx
+│   └── Register.tsx
+└── App.tsx           # Root component with routing setup
+server.js             # Express backend (auth API + MongoDB)
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## API Endpoints
 
-## How can I deploy this project?
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/auth/register` | Register a new user |
+| POST | `/api/auth/login` | Login and receive a JWT |
+| GET | `/api/auth/me` | Get logged-in user details (protected) |
 
-Simply open [Lovable](https://lovable.dev/projects/600cfede-b8f4-4b5e-8d86-4458807008eb) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## Build for Production
+```sh
+npm run build
+```
